@@ -7,13 +7,14 @@ abstract class DarkSkyWeatherBase {
   final Language language;
   final Units units;
 
-  static const String _baseUrl = 'https://api.darksky.net';
+  static const String _baseUrl = 'https://weathermachine.io';
   String _getForecastUrl(
           double lat, double lon, String excludes, String lang, String units) =>
       '$_baseUrl/forecast/$_apiToken/$lat,$lon' +
       '?exclude=$excludes' +
       '&lang=$lang' +
-      '&units=$units';
+      '&units=$units' +
+      '&source=apple_weather';
 
   String _getTimeMachineForecastUrl(double lat, double lon, DateTime time,
       String excludes, String lang, String units) {
@@ -22,7 +23,8 @@ abstract class DarkSkyWeatherBase {
     return '$_baseUrl/forecast/$_apiToken/$lat,$lon,$timeInSeconds' +
         '?exclude=$excludes' +
         '&lang=$lang' +
-        '&units=$units';
+        '&units=$units' +
+        '&source=apple_weather';
   }
 
   DarkSkyWeatherBase(this._apiToken,
